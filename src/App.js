@@ -1,11 +1,10 @@
 import React from "react";
-import CompetitionPageMaster from "./page/CompetitionPageJudge";
+import CompetitionPage from "./page/CompetitionPage";
 
 function App() {
   return (
-    <div>
-      <CompetitionPageMaster />
-     
+    <div style={{ backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
+      <CompetitionPage />
     </div>
   );
 }

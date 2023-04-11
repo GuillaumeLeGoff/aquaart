@@ -5,12 +5,17 @@ function Header() {
   return (
     <Paper>
       <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box>
+          <Typography variant="h4">Stramatel Aquadive</Typography>
+          
+        </Box>
         <Box>
           <Typography variant="h5">Nom de la compétition :</Typography>
-          <Typography variant="h5">Session:</Typography>
+          <Typography variant="h6">Session:</Typography>
           <Typography variant="subtitle1">Nom du plongeur :</Typography>
           <Typography variant="subtitle1">Type de compétition:</Typography>
           <Typography variant="subtitle1">Type de plongeoir: </Typography>
+          <Typography variant="subtitle1">Tablette numéro: </Typography>
         </Box>
         <Box>
           <Button

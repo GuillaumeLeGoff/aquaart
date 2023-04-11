@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AQUAART</string>
+    <string name="title_activity_main">AQUAART</string>
+    <string name="package_name">io.ionic.AQUAART</string>
+    <string name="custom_url_scheme">io.ionic.AQUAART</string>
+</resources>

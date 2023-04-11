@@ -7,27 +7,46 @@ import NotesJuge from "../components/NotesJuge";
 
 function CompetitionPage() {
   const Master = true;
-  const [notes, setNotes] = useState({
-    note1: 0,
-    note2: 0,
-    note3: 0,
-  });
-  const [juges, setJuges] = useState({
-    juge1: {
+  const [notes, setNotes] = useState([
+    { note: 0 },
+    { note: 0 },
+    { note: 10 },
+    { note: 9 },
+  ]);
+  const [juges, setJuges] = useState([
+    {
       note1: { note: 0, valide: false },
       note2: { note: 0, valide: false },
       note3: { note: 0, valide: false },
     },
-    juge2: {
+    {
       note1: { note: 0, valide: false },
       note2: { note: 0, valide: false },
       note3: { note: 0, valide: false },
     },
-  });
+    {
+      note1: { note: 0, valide: false },
+      note2: { note: 0, valide: false },
+      note3: { note: 0, valide: false },
+    },
+  ]);
+  
 
   const handleNoteChange = (event) => {
-    setNotes({ ...notes, [event.target.name]: event.target.value });
+    const noteIndex = parseInt(event.target.name);
+    const updatedNotes = notes.map((note, index) =>
+      index === noteIndex ? { ...note, note: event.target.value } : note
+    );
+    setNotes(updatedNotes);
   };
+
+  const handleJugeNoteChange = (jugeIndex, noteKey) => (event) => {
+    const updatedJuges = [...juges];
+    updatedJuges[jugeIndex][noteKey].note = event.target.value;
+    setJuges(updatedJuges);
+  };
+  
+
 
   return (
     <div>
@@ -42,7 +61,7 @@ function CompetitionPage() {
               <Note notes={notes} handleNoteChange={handleNoteChange} />
             </Grid>
             <Grid item xs={6}>
-              <NotesJuge juges={juges} setJuges={setJuges} />
+              <NotesJuge juges={juges} handleJugeNoteChange={handleJugeNoteChange}  />
             </Grid>
           </>
         ) : (

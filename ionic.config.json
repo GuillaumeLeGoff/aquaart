@@ -1,0 +1,7 @@
+{
+    "name": "AQUAART",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }

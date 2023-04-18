@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 
-const WebSocketApp = () => {
- 
-  let webSocket = new WebSocket('ws://192.168.0.166:7890');
-  webSocket.onmessage = function(e) { console.log(e)};
-  webSocket.send("test");
+const App = () => {
+  const [message, setMessage] = useState('');
+  const [input, setInput] = useState('');
+
+  useEffect(() => {
+    const ws = new WebSocket("wss://192.168.0.166:7890");
+
+    ws.onopen = (event) => {
+      console.log('Connected to server');
+    };
+
+    ws.onmessage = function (event) {
+      setMessage(event.data);
+    };
+
+    return () => {
+      ws.close();
+    };
+  }, []);
+
+  const sendMessage = () => {
+    const ws = new WebSocket("wss://192.168.0.166:7890");
+    ws.send(input);
+  };
+
   return (
     <div>
-      <h2>Formulaire de test pour websocket</h2>
-
-     
+      <h1>React Web Socket</h1>
+      <p>Received message: {message}</p>
+      <input type="text" onChange={(e) => setInput(e.target.value)} />
+      <button onClick={sendMessage}>Send Message</button>
     </div>
   );
 };
 
-export default WebSocketApp;
+export default App;
